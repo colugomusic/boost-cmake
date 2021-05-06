@@ -16,9 +16,9 @@ CPMAddPackage(
   DOWNLOAD_ONLY YES
 )
 
-include(CheckBoostVersion)
-
 set(BOOST_SOURCE ${boost_SOURCE_DIR})
+
+include(CheckBoostVersion)
 
 message(STATUS "Boost found: ${BOOST_VERSION} ${BOOST_SOURCE}")
 
