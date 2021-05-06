@@ -6,23 +6,19 @@ option(BOOST_DISABLE_TESTS "Do not build test targets, even if building standalo
 set(BOOST_URL "https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.bz2" CACHE STRING "Boost download URL")
 set(BOOST_URL_SHA256 "f0397ba6e982c4450f27bf32a2a83292aba035b827a5623a14636ea583318c41" CACHE STRING "Boost download URL SHA256 checksum")
 
-include(FetchContent)
-FetchContent_Declare(
-  Boost
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
+include(CPM)
+
+CPMAddPackage(
+  NAME boost
   URL ${BOOST_URL}
   URL_HASH SHA256=${BOOST_URL_SHA256}
+  DOWNLOAD_ONLY YES
 )
-FetchContent_GetProperties(Boost)
 
-if(NOT Boost_POPULATED)
-  message(STATUS "Fetching Boost")
-  FetchContent_Populate(Boost)
-  message(STATUS "Fetching Boost - done")
-  set(BOOST_SOURCE ${boost_SOURCE_DIR})
-endif()
-
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules)
 include(CheckBoostVersion)
+
+set(BOOST_SOURCE ${boost_SOURCE_DIR})
 
 message(STATUS "Boost found: ${BOOST_VERSION} ${BOOST_SOURCE}")
 
