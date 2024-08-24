@@ -35,3 +35,5 @@ _add_boost_test(
     RUN ${BOOST_SOURCE}/libs/filesystem/example/simple_ls.cpp
     RUN ${BOOST_SOURCE}/libs/filesystem/example/file_status.cpp
 )
+
+target_compile_definitions(Boost::filesytem PRIVATE BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF=1)
