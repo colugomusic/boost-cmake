@@ -4,4 +4,3 @@ target_include_directories(Boost::boost SYSTEM INTERFACE ${BOOST_SOURCE})
 
 # Disable autolink
 target_compile_definitions(Boost::boost INTERFACE BOOST_ALL_NO_LIB=1)
-target_compile_definitions(Boost::boost INTERFACE BOOST_DLL_USE_STD_FS=1)
