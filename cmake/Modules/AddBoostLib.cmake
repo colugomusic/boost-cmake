@@ -9,6 +9,7 @@ function(_add_boost_lib)
   set_target_properties(Boost_${BOOSTLIB_NAME} PROPERTIES
     OUTPUT_NAME "boost_${BOOSTLIB_NAME}"
     FOLDER "Boost"
+	CXX_STANDARD 20
   )
   if(NOT BOOST_STANDALONE)
     set_target_properties(Boost_${BOOSTLIB_NAME} PROPERTIES EXCLUDE_FROM_ALL 1)
