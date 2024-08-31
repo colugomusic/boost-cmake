@@ -41,5 +41,10 @@ check_cxx_source_compiles("#include <${BOOST_SOURCE}/libs/filesystem/config/has_
 
 target_compile_definitions(Boost_filesystem PRIVATE
 	BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF=${BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF}
-	BOOST_FILESYSTEM_HAS_POSIX_AT_APIS=${BOOST_FILESYSTEM_HAS_POSIX_AT_APIS}
 )
+
+if (NOT CMAKE_SYSTEM_NAME STREQUAL DARWIN)
+	target_compile_definitions(Boost_filesystem PRIVATE
+		BOOST_FILESYSTEM_HAS_POSIX_AT_APIS=${BOOST_FILESYSTEM_HAS_POSIX_AT_APIS}
+	)
+endif()
