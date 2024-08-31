@@ -36,7 +36,7 @@ _add_boost_test(
     RUN ${BOOST_SOURCE}/libs/filesystem/example/file_status.cpp
 )
 
-if (CMAKE_SYSTEM_NAME STREQUAL DARWIN)
+if (CMAKE_SYSTEM_NAME STREQUAL Darwin)
 	target_compile_definitions(Boost_filesystem PRIVATE
 		BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF=1
 	)
