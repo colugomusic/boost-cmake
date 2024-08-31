@@ -37,7 +37,10 @@ _add_boost_test(
 )
 
 if (CMAKE_SYSTEM_NAME STREQUAL DARWIN)
-	target_compile_definitions(Boost_filesystem PRIVATE BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF=1)
+	target_compile_definitions(Boost_filesystem PRIVATE
+		BOOST_FILESYSTEM_NO_CXX20_ATOMIC_REF=1
+		BOOST_FILESYSTEM_HAS_POSIX_AT_APIS=0
+	)
 else()
 	check_cxx_source_compiles("#include <${BOOST_SOURCE}/libs/filesystem/config/has_cxx20_atomic_ref.cpp>" BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF)
 	check_cxx_source_compiles("#include <${BOOST_SOURCE}/libs/filesystem/config/has_posix_at_apis.cpp>" BOOST_FILESYSTEM_HAS_POSIX_AT_APIS)
