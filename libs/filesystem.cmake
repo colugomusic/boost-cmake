@@ -36,6 +36,7 @@ _add_boost_test(
     RUN ${BOOST_SOURCE}/libs/filesystem/example/file_status.cpp
 )
 
+INCLUDE(CheckCXXSourceCompiles)
 check_cxx_source_compiles("#include <${BOOST_SOURCE}/libs/filesystem/config/has_cxx20_atomic_ref.cpp>" BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF)
 check_cxx_source_compiles("#include <${BOOST_SOURCE}/libs/filesystem/config/has_posix_at_apis.cpp>" BOOST_FILESYSTEM_HAS_POSIX_AT_APIS)
 if (NOT ${BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF})
